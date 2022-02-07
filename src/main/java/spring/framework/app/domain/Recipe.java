@@ -1,6 +1,7 @@
 package spring.framework.app.domain;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Recipe {
@@ -20,8 +21,20 @@ public class Recipe {
     @Lob
     private Byte[] image;
 
+    @Enumerated(EnumType.STRING)
+    private Difficulties difficulties;
+
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredient;
+
+    @ManyToMany
+    @JoinTable(name="recipe_category",
+    joinColumns = @JoinColumn(name="recipe_id"),
+            inverseJoinColumns = @JoinColumn(name="category_id"))
+    private Set<Category> categories;
 
     public Long getId() {
         return Id;
@@ -101,5 +114,29 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+    }
+
+    public Difficulties getDifficulties() {
+        return difficulties;
+    }
+
+    public void setDifficulties(Difficulties difficulties) {
+        this.difficulties = difficulties;
+    }
+
+    public Set<Ingredient> getIngredient() {
+        return ingredient;
+    }
+
+    public void setIngredient(Set<Ingredient> ingredient) {
+        this.ingredient = ingredient;
+    }
+
+    public Set<Category> getCategoryNames() {
+        return categories;
+    }
+
+    public void setCategoryNames(Set<Category> categories) {
+        this.categories = categories;
     }
 }

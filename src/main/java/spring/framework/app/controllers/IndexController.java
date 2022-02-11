@@ -1,13 +1,25 @@
 package spring.framework.app.controllers;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import spring.framework.app.services.RecipeService;
 
+@Slf4j
 @Controller
 public class IndexController {
 
-    @RequestMapping({"/","/index","/index.html"})
-    public String IndexPage(){
+    private final RecipeService recipeService;
+
+    public IndexController(RecipeService recipeService) {
+        this.recipeService = recipeService;
+    }
+
+    @RequestMapping({"","/","/index","/index.html"})
+    public String IndexPage(Model model){
+        log.debug("Getting Index Page");
+        model.addAttribute("recipes",recipeService.getRecipes());
 
         return "index";
     }

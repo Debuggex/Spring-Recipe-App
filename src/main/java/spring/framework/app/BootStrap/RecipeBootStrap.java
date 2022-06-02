@@ -144,6 +144,10 @@ public class RecipeBootStrap implements ApplicationListener<ContextRefreshedEven
         guacRecipe.getCategoryNames().add(americanCategory);
         guacRecipe.getCategoryNames().add(mexicanCategory);
 
+        guacRecipe.setUrl("");
+        guacRecipe.setServing(4);
+        guacRecipe.setSource("Simply Recipes");
+
         //add to return list
         recipes.add(guacRecipe);
 

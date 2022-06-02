@@ -1,17 +1,24 @@
 package spring.framework.app.domain;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Setter
+
+@Getter
+
+@AllArgsConstructor
+
+@NoArgsConstructor
+
 @Entity
 public class Recipe {
 
     @javax.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
 
     private String description;
@@ -80,4 +87,12 @@ public class Recipe {
         return categories;
     }
 
+    public Notes getNotes() {
+        return notes;
+    }
+    public Recipe addIngredient(Ingredient ingredient){
+        ingredient.setRecipe(this);
+        this.ingredient.add(ingredient);
+        return this;
+    }
 }

@@ -34,12 +34,12 @@ public class RecipeCommandToRecipe implements Converter<RecipeCommand, Recipe> {
 
         final Recipe recipe = new Recipe();
         recipe.setId(source.getId());
-        recipe.setCoocking_time(source.getCookTime());
+        recipe.setCoocking_time(source.getCookingTime());
         recipe.setPrep_time(source.getPrepTime());
         recipe.setDescription(source.getDescription());
-        recipe.setDifficulties(source.getDifficulty());
-        recipe.setDirection(source.getDirections());
-        recipe.setServing(source.getServings());
+        recipe.setDifficulties(source.getDifficulties());
+        recipe.setDirection(source.getDirection());
+        recipe.setServing(source.getServing());
         recipe.setSource(source.getSource());
         recipe.setUrl(source.getUrl());
         recipe.setNotes(notesConverter.convert(source.getNotes()));

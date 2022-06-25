@@ -17,7 +17,7 @@
             crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 </head>
 <body>
-<!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
+<!--/*@thymesVar id="recipe" type="spring.framework.app.domain.Recipe"*/-->
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -61,11 +61,16 @@
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>Cooktime:</label>
-                                    <input type="text" class="form-control" th:field="*{cookTime}"/>
+                                    <input type="text" class="form-control" th:field="*{cookingTime}"/>
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>Difficulty:</label>
-                                    <select class="form-control">
+                                    <select class="form-control" th:field="*{difficulties}">
+                                        <option th:each="difficulty :${T(spring.framework.app.domain.Difficulties).values()}"
+                                        th:value="${difficulty}"
+                                        th:text="${difficulty}">val</option>
+                                    </select>
+                                    <select class="form-control" th:remove="all">
                                         <option>Easy</option>
                                         <option>Medium</option>
                                         <option>Hard</option>
@@ -75,7 +80,7 @@
                             <div class="row">
                                 <div class="col-md-3 form-group">
                                     <label>Servings:</label>
-                                    <input type="text" class="form-control" th:field="*{servings}"/>
+                                    <input type="text" class="form-control" th:field="*{serving}"/>
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>Source:</label>
@@ -122,7 +127,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-12 form-group">
-                                    <textarea class="form-control" rows="3" th:field="*{directions}"></textarea></div>
+                                    <textarea class="form-control" rows="3" th:field="*{direction}"></textarea></div>
                             </div>
                         </div>
                     </div>

@@ -22,8 +22,8 @@ public class Recipe {
     private Long Id;
 
     private String description;
-    private Integer prep_time;
-    private Integer coocking_time;
+    private Integer prepTime;
+    private Integer cookingTime;
     private Integer serving;
     private String source;
     private String url;
@@ -55,12 +55,12 @@ public class Recipe {
     }
 
     public void setPrep_time(Integer prep_time) {
-        this.prep_time = prep_time;
+        this.prepTime = prep_time;
     }
 
 
     public void setCoocking_time(Integer coocking_time) {
-        this.coocking_time = coocking_time;
+        this.cookingTime = coocking_time;
     }
 
 
